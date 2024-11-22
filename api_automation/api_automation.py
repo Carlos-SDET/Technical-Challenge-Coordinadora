@@ -33,7 +33,7 @@ def get_base_request():
         "documento": "1036149000",
         "celular": "3005777777",
         "direccion": "Calle 50 # 40-30",
-        "fechaRecogida": (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d"),
+        "fechaRecogida": (datetime.now() + timedelta(days=2)).strftime("%Y-%m-%d"),
         "nombreEntrega": "carlos",
         "apellidosEntrega": "posada",
         "celularEntrega": "3001234567",
@@ -130,6 +130,6 @@ def test_invalid_date_format():
 if __name__ == "__main__":
     pytest.main([
         __file__,
-        "--html=reporte_pruebas.html",
+        "--html=report.html",
         "--self-contained-html"
     ])
