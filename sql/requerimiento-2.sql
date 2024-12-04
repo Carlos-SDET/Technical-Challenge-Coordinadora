@@ -3,18 +3,19 @@
  * por la cantidad de empleados
  */
 
-USE coordinadora;
+use coordinadora;
 
-SELECT 
-    d.nombreDpto AS departamento,
-    COUNT(*) AS numEmpleados
-FROM 
+select
+	d.nombreDpto as departamento,
+	COUNT(*) as numEmpleados
+from 
 	Empleado e
-JOIN 
-	Departamento d ON e.codDepto = d.codDepto
-GROUP BY 
+join 
+	Departamento d on
+	e.codDepto = d.codDepto
+group by 
 	d.nombreDpto
-HAVING 
+having 
 	COUNT(*) > 3
-ORDER BY 
-	COUNT(*) DESC;
+order by 
+	COUNT(*) desc;

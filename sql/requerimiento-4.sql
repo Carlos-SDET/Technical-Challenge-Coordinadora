@@ -2,17 +2,18 @@
  * Dpto con la nomina mas alta (salario+comision)
  */
 
-USE coordinadora;
+use coordinadora;
 
-SELECT 
-    d.nombreDpto AS departamento, 
-    SUM(e.salEmp + e.comisionE) AS nominaTotal
-FROM 
-    Departamento d
-JOIN 
-    Empleado e ON d.codDepto = e.codDepto
-GROUP BY 
-    d.nombreDpto
-ORDER BY 
-    nominaTotal desc
-LIMIT 1;
+select
+	d.nombreDpto as departamento,
+	SUM(e.salEmp + e.comisionE) as nominaTotal
+from
+	Departamento d
+join 
+    Empleado e on
+	d.codDepto = e.codDepto
+group by
+	d.nombreDpto
+order by 
+	nominaTotal desc
+limit 1;

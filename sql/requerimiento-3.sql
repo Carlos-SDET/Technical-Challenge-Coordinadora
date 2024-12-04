@@ -1,11 +1,15 @@
 -- 3. Empleados sin departamento valido
 
-USE coordinadora;
+use coordinadora;
 
-SELECT 
+select 
 	nomEmp as nombre, 
-	codDepto as departamento
-FROM 
-	Empleado 
-WHERE 
-	codDepto NOT IN (SELECT codDepto FROM Departamento);
+	codDepto as codigo_departamento
+from 
+	Empleado
+where 
+	codDepto not in (
+	select
+		codDepto
+	from
+		Departamento);

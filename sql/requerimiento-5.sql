@@ -1,19 +1,18 @@
 /*
  * Directores con mas empleados a cargo
  */
-USE coordinadora;
+use coordinadora;
 
-SELECT 
-    e.jefeID AS directorID,
-    COUNT(e.nDIEmp) AS empleados
-FROM 
-    Empleado e
-JOIN 
-    Departamento d ON e.jefeID = d.director
-WHERE 
-    e.jefeID IS NOT NULL
-GROUP BY 
-    e.jefeID
-ORDER BY 
-    empleados DESC
-LIMIT 3;
+select
+	e.jefeID as directorID,
+	count(e.nDIEmp) as empleados
+from
+	Empleado e
+join 
+    Departamento d on
+	e.jefeID = d.director
+group by 
+	e.jefeID
+order by 
+	empleados desc
+limit 3;

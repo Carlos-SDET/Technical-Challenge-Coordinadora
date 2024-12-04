@@ -5,18 +5,17 @@ El pago regular incluye salario y comisión
 Ordenar la información alfabéticamente por empleado
 */
 
+use coordinadora;
 
-USE coordinadora;
-
-SELECT 
-    nomEmp AS empleado,
-    salEmp as salarioBase,
-    comisionE  as comision,
-    500000 as bonoUnico,
-    (salEmp + comisionE + 500000) AS pagoTotal
-FROM 
-    Empleado
-WHERE 
-    codDepto = 3000
-ORDER BY 
-    nomEmp ASC;
+select
+	e.nomEmp as empleado,
+	e.salEmp as salarioBase,
+	e.comisionE as comision,
+	500000 as bonoUnico,
+	(e.salEmp + e.comisionE + 500000) as pagoTotal
+from
+	Empleado e
+where
+	e.codDepto = 3000
+order by
+	e.nomEmp asc;

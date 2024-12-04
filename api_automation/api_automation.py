@@ -32,7 +32,7 @@ def get_base_request():
         "apellidos": "prueba1",
         "documento": "1036149000",
         "celular": "3005777777",
-        "direccion": "Calle 50 # 40-30",
+        "direccion": "Calle 50 # 40-20",
         "fechaRecogida": (datetime.now() + timedelta(days=2)).strftime("%Y-%m-%d"),
         "nombreEntrega": "carlos",
         "apellidosEntrega": "posada",
@@ -76,7 +76,7 @@ def test_successful_request():
     response = requests.post(BASE_URL, json=request_data)
     response_data = response.json()
     
-    # Validaciones
+    # validations
     assert response.status_code == 200
     assert response_data["isError"] == False
     assert "id_recogida" in response_data["data"]
@@ -88,7 +88,7 @@ def test_duplicate_request():
     duplicate_response = requests.post(BASE_URL, json=request_data)
     response_data = duplicate_response.json()
     
-    # Validaciones
+    # validations
     assert duplicate_response.status_code == 200
     assert response_data["isError"] == True
     assert "Ya existe una recogida programada para hoy" in response_data["data"]["message"]
@@ -99,7 +99,7 @@ def test_future_date_request():
     response = requests.post(BASE_URL, json=request_data)
     response_data = response.json()
     
-    # Validaciones
+    # validations
     assert response.status_code == 200
     assert response_data["isError"] == True
     assert "no debe ser mayor a la fecha" in response_data["data"]["message"]
@@ -110,7 +110,7 @@ def test_missing_required_fields():
     response = requests.post(BASE_URL, json=request_data)
     response_data = response.json()
     
-    # Validaciones
+    # validations
     assert response.status_code == 400
     assert response_data["isError"] == True
     assert "apellidosEntrega" in response_data["cause"]
@@ -122,7 +122,7 @@ def test_invalid_date_format():
     response = requests.post(BASE_URL, json=request_data)
     response_data = response.json()
     
-    # Validaciones
+    # validations
     assert response.status_code == 200
     assert response_data["isError"] == True
     assert "debe tener un formato valido" in response_data["data"]["message"]
@@ -130,6 +130,8 @@ def test_invalid_date_format():
 if __name__ == "__main__":
     pytest.main([
         __file__,
-        "--html=report.html",
-        "--self-contained-html"
+        "-v",
+        "--html=./reports/html_reports/report.html",
+        "--self-contained-html",
+        "--capture=tee-sys"
     ])

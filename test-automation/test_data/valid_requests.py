@@ -54,7 +54,7 @@ REQUEST_JSON = '''
         "observaciones": ""
     },
     "direccion": "Cr 80 # 82-62",
-    "fechaRecogida": "2024-11-25",
+    "fechaRecogida": "2024-12-05",
     "nombreEntrega": "Carlos",
     "apellidosEntrega": "Posada",
     "celularEntrega": "3001234567",
